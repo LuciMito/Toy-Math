@@ -7,9 +7,11 @@ public class Player : MonoBehaviour
 
     public float Speed;
     private Animator anim;
+    public static Player instance;
 
     void Start()
     {
+        instance = this;
         anim = GetComponent<Animator>();
     }
 
@@ -26,18 +28,21 @@ public class Player : MonoBehaviour
         if (Input.GetAxis("Horizontal") > 0f)
         {
             anim.SetBool("walk", true);
+            anim.SetBool("obj", false);
             transform.eulerAngles = new Vector3(0f, 180f, 0f);
         }
 
         if (Input.GetAxis("Horizontal") < 0f)
         {
             anim.SetBool("walk", true);
+            anim.SetBool("obj", false);
             transform.eulerAngles = new Vector3(0f, 0f, 0f);
         }
 
         if (Input.GetAxis("Horizontal") == 0f)
         {
             anim.SetBool("walk", false);
+            anim.SetBool("obj", false);
         }
     }
 

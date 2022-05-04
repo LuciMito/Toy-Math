@@ -8,10 +8,12 @@ public class GrabContoller : MonoBehaviour
     public Transform grabDetect;
     public Transform boxHolder;
     public float rayDist;
-    
+    private Animator anim;
+    public static GrabContoller instance;
+
     void Start()
     {
-        
+        instance = this;
     }
 
     void Update()
@@ -25,11 +27,14 @@ public class GrabContoller : MonoBehaviour
                 grabCheck.collider.gameObject.transform.parent = boxHolder;
                 grabCheck.collider.gameObject.transform.position = boxHolder.position;
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+                anim.SetBool("obj", true);
+                transform.eulerAngles = new Vector3(0f, 180f, 0f);
             }
             else
             {
                 grabCheck.collider.gameObject.transform.parent = null;
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+                anim.SetBool("obj", false);
             }
         }
     }
