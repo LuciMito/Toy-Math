@@ -7,11 +7,9 @@ public class Player : MonoBehaviour
 
     public float Speed;
     private Animator anim;
-    public static Player instance;
 
     void Start()
     {
-        instance = this;
         anim = GetComponent<Animator>();
     }
 
@@ -25,25 +23,52 @@ public class Player : MonoBehaviour
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
         transform.position += movement * Time.deltaTime * Speed;
 
-        if (Input.GetAxis("Horizontal") > 0f)
+        if(GrabContoller.instance.pego == false)
         {
-            anim.SetBool("walk", true);
-            anim.SetBool("obj", false);
-            transform.eulerAngles = new Vector3(0f, 180f, 0f);
+            if (Input.GetAxis("Horizontal") > 0f)
+            {
+                anim.SetBool("walk", true);
+                anim.SetBool("obj", false);
+                transform.eulerAngles = new Vector3(0f, 180f, 0f);
+            }
+
+            if (Input.GetAxis("Horizontal") < 0f)
+            {
+                anim.SetBool("walk", true);
+                anim.SetBool("obj", false);
+                transform.eulerAngles = new Vector3(0f, 0f, 0f);
+            }
+
+            if (Input.GetAxis("Horizontal") == 0f)
+            {
+                anim.SetBool("walk", false);
+                anim.SetBool("obj", false);
+            }
         }
 
-        if (Input.GetAxis("Horizontal") < 0f)
+        else if (GrabContoller.instance.pego == true)
         {
-            anim.SetBool("walk", true);
-            anim.SetBool("obj", false);
-            transform.eulerAngles = new Vector3(0f, 0f, 0f);
+            if (Input.GetAxis("Horizontal") > 0f)
+            {
+                anim.SetBool("walk", true);
+                anim.SetBool("obj", true);
+                transform.eulerAngles = new Vector3(0f, 180f, 0f);
+            }
+
+            if (Input.GetAxis("Horizontal") < 0f)
+            {
+                anim.SetBool("walk", true);
+                anim.SetBool("obj", true);
+                transform.eulerAngles = new Vector3(0f, 0f, 0f);
+            }
+
+            if (Input.GetAxis("Horizontal") == 0f)
+            {
+                anim.SetBool("walk", false);
+                anim.SetBool("obj", true);
+            }
         }
 
-        if (Input.GetAxis("Horizontal") == 0f)
-        {
-            anim.SetBool("walk", false);
-            anim.SetBool("obj", false);
-        }
     }
 
 }

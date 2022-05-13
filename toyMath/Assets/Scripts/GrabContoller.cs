@@ -9,6 +9,8 @@ public class GrabContoller : MonoBehaviour
     public Transform boxHolder;
     public float rayDist;
     private Animator anim;
+    public bool pego;
+
     public static GrabContoller instance;
 
     void Start()
@@ -24,6 +26,7 @@ public class GrabContoller : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Space))
             {
+                pego = true;
                 grabCheck.collider.gameObject.transform.parent = boxHolder;
                 grabCheck.collider.gameObject.transform.position = boxHolder.position;
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
@@ -32,6 +35,7 @@ public class GrabContoller : MonoBehaviour
             }
             else
             {
+                pego = false;
                 grabCheck.collider.gameObject.transform.parent = null;
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
                 anim.SetBool("obj", false);
