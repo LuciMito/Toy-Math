@@ -6,16 +6,38 @@ public class Player : MonoBehaviour
 {
 
     public float Speed;
+    public float JumpForce;
+    public bool isJumping;
+    private Rigidbody2D rig;
     private Animator anim;
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        rig = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
         Move();
+        Jump();
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 6 || collision.gameObject.layer == 7)
+        {
+            isJumping = false;
+            anim.SetBool("jump", false);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 6)
+        {
+            isJumping = true;
+        }
     }
 
     void Move()
@@ -69,6 +91,18 @@ public class Player : MonoBehaviour
             }
         }
 
+    }
+
+    void Jump()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (isJumping == false)
+            {
+                rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
+                anim.SetBool("jump", true);
+            }
+        }
     }
 
 }

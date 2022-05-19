@@ -24,7 +24,7 @@ public class GrabContoller : MonoBehaviour
 
         if(grabCheck.collider != null && grabCheck.collider.tag == "toy")
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.P))
             {
                 pego = true;
                 grabCheck.collider.gameObject.transform.parent = boxHolder;
