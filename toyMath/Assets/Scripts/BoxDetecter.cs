@@ -25,6 +25,17 @@ public class BoxDetecter : MonoBehaviour
         if (collider.gameObject.tag == "toy")
         {
             SceneManager.LoadScene(LvlName);
+        }
     }
+
+    public ArrayList ColliderTest(string tag)
+    {
+        ArrayList colliderVector = new ArrayList();
+
+        if (tag.Equals("toy"))
+        {
+            colliderVector.Add(true);
+        }
+        return colliderVector;
     }
 }

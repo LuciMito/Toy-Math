@@ -105,4 +105,33 @@ public class Player : MonoBehaviour
         }
     }
 
+   public ArrayList JumpTest(string direction, bool isJumping)
+    {
+        float jumpForce = 20f;
+        ArrayList jumpVector = new ArrayList();
+        if (direction.Equals("Jump"))
+        {
+            if (isJumping == false)
+            {
+                jumpVector.Add(0f);
+                jumpVector.Add(jumpForce);
+            }
+        }
+        return jumpVector;
+    }
+
+    public ArrayList MoveTest(string direction)
+    {
+        float velocidade = 8f;
+        ArrayList moveVector = new ArrayList();
+
+        if (direction.Equals("Horizontal"))
+        {
+            moveVector.Add(velocidade);
+            moveVector.Add(0f);
+            moveVector.Add(0f);
+        }
+        return moveVector;
+    }
+
 }
