@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - toy
+  - toy16
+  - toy18
+  - toy20
   layers:
   - Default
   - TransparentFX

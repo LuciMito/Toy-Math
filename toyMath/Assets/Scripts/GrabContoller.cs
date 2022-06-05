@@ -22,7 +22,9 @@ public class GrabContoller : MonoBehaviour
     {
         RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, Vector2.right * transform.localScale, rayDist);
 
-        if(grabCheck.collider != null && grabCheck.collider.tag == "toy")
+        if(grabCheck.collider != null && grabCheck.collider.tag == "toy16" ||
+            grabCheck.collider != null && grabCheck.collider.tag == "toy18" ||
+            grabCheck.collider != null && grabCheck.collider.tag == "toy20")
         {
             if (Input.GetKey(KeyCode.P))
             {
@@ -41,5 +43,6 @@ public class GrabContoller : MonoBehaviour
                 anim.SetBool("obj", false);
             }
         }
+
     }
 }

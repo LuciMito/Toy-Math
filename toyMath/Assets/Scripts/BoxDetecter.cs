@@ -11,7 +11,7 @@ public class BoxDetecter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,8 +22,24 @@ public class BoxDetecter : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "toy")
+        if (collider.gameObject.tag == "toy16")
         {
+            Game_Score.instance.score -= 5;
+            Game_Score.instance.UpdateScoreText();
+            SceneManager.LoadScene(LvlName);
+        }
+
+        if (collider.gameObject.tag == "toy18")
+        {
+            Game_Score.instance.score += 10;
+            Game_Score.instance.UpdateScoreText();
+            SceneManager.LoadScene(LvlName);
+        }
+
+        if (collider.gameObject.tag == "toy20")
+        {
+            Game_Score.instance.score -= 5;
+            Game_Score.instance.UpdateScoreText();
             SceneManager.LoadScene(LvlName);
         }
     }
@@ -32,7 +48,7 @@ public class BoxDetecter : MonoBehaviour
     {
         ArrayList colliderVector = new ArrayList();
 
-        if (tag.Equals("toy"))
+        if (tag.Equals("toy16") || tag.Equals("toy18") || tag.Equals("toy20"))
         {
             colliderVector.Add(true);
         }
