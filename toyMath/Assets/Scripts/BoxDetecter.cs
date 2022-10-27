@@ -42,6 +42,48 @@ public class BoxDetecter : MonoBehaviour
             Game_Score.instance.UpdateScoreText();
             SceneManager.LoadScene(LvlName);
         }
+
+        if (collider.gameObject.tag == "toy26")
+        {
+            Game_Score.instance.score += 10;
+            Game_Score.instance.UpdateScoreText();
+            SceneManager.LoadScene(LvlName);
+        }
+
+        if (collider.gameObject.tag == "toy28")
+        {
+            Game_Score.instance.score -= 5;
+            Game_Score.instance.UpdateScoreText();
+            SceneManager.LoadScene(LvlName);
+        }
+
+        if (collider.gameObject.tag == "toy30")
+        {
+            Game_Score.instance.score -= 5;
+            Game_Score.instance.UpdateScoreText();
+            SceneManager.LoadScene(LvlName);
+        }
+
+        if (collider.gameObject.tag == "toy31")
+        {
+            Game_Score.instance.score -= 5;
+            Game_Score.instance.UpdateScoreText();
+            SceneManager.LoadScene(LvlName);
+        }
+
+        if (collider.gameObject.tag == "toy32")
+        {
+            Game_Score.instance.score -= 5;
+            Game_Score.instance.UpdateScoreText();
+            SceneManager.LoadScene(LvlName);
+        }
+
+        if (collider.gameObject.tag == "toy33")
+        {
+            Game_Score.instance.score += 10;
+            Game_Score.instance.UpdateScoreText();
+            SceneManager.LoadScene(LvlName);
+        }
     }
 
     public ArrayList ColliderTest(string tag)

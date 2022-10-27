@@ -7,6 +7,12 @@ TagManager:
   - toy16
   - toy18
   - toy20
+  - toy26
+  - toy28
+  - toy30
+  - toy31
+  - toy32
+  - toy33
   layers:
   - Default
   - TransparentFX
